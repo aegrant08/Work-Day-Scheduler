@@ -32,14 +32,15 @@ body {
   
   .row {
     white-space: pre-wrap;
-    height: 80px;
-    border-top: 1px solid white;;
+    height: 65px;
+    border-top: 1px solid black;
   }
   
   .hour {
     background-color: #ffffff;
     color: #000000;
-    border-top: 1px dashed #000000;
+    border: 1px #000000;
+    border-right: 1px #000000;
   }
   
   .past {
@@ -59,8 +60,9 @@ body {
   
   .saveBtn {
     border-left: 1px solid black;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 65px;
     background-color: #06AED5;
     color: white;
   }
