@@ -1,16 +1,25 @@
 $(document).ready(function () {
 
+    $(window).on("load", function () {
+        date = moment().format("MMMM Do YYYY, h:mm a");
+        $("#currentDay").append(date);
+        time = moment().format("H");
+    });
+
 
     // set date and time on work planner
+    // $(window).on("load", function () {
+    //     date = moment().format("MMMM Do YYYY");
+    //     console.log(date);
+    //     $("#currentDate").append(date);
+    //     time = moment().format("H");
+    // });
     // date needs to update with day
     // time needs to update
     // display date in <p> on html page
 
     // set up hour blocks
     // set up rows for hour blocks
-    var $timeBlock = $("<div>");
-    $timeBlock.addClass("row");
-    $timeBlock.addClass("time-block");
 
     // set hours in rows
     // set up save buttons
