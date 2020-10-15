@@ -4,6 +4,7 @@ $(document).ready(function () {
     // sets date at top of page
     $("#currentDay").text(moment().format("MMMM Do YYYY"));
 
+
     // array for plans saved to local storage by user
     var scheduled = [];
 
@@ -38,21 +39,37 @@ $(document).ready(function () {
         $(".row").each(function () {
             var timeBlock = parseInt($(this).attr("id").split("hour")[1]);
 
-            if (currentTime > timeBlock) {
-                $(this).addClass("past");
+            // sets the hour blocks green for future
+            if (currentTime < timeBlock) {
+                $(this).addClass("future");
             }
+            // sets the hour blocks red for present
             else if (currentTime === timeBlock) {
-                $(this).removeClass("past");
+                $(this).removeClass("future");
                 $(this).addClass("present");
             }
+            // set the hour blocks grey for past
             else {
-                $(this).removeClass("past");
+                $(this).removeClass("future");
                 $(this).removeClass("present");
-                $(this).addClass("future");
+                $(this).addClass("past");
             }
         });
     }
     timeKeeper();
+
+    var secondsLeft = 15;
+    function setTime() {
+        setInterval(function () {
+            secondsLeft--;
+
+            if (secondsLeft === 0) {
+                timeKeeper();
+                secondsLeft = 15;
+            }
+        }, 1000);
+    }
+    setTime();
 
     // tie hour blocks to date and time
     // hour blocks that are past turn grey
