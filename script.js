@@ -1,29 +1,59 @@
+
 $(document).ready(function () {
 
-    $(window).on("load", function () {
-        date = moment().format("MMMM Do YYYY, h:mm a");
-        $("#currentDay").append(date);
-        time = moment().format("H");
+    // sets date at top of page
+    $("#currentDay").text(moment().format("MMMM Do YYYY"));
+
+    // array for plans saved to local storage by user
+    var scheduled = [];
+
+    // saves user's plans when scheduled button is clicked
+    $(".saveBtn").on("click", function () {
+        var plans = $(this).siblings(".plans").val();
+        var time = $(this).parent().attr("id");
+        var dateStamp = moment().format("dddd, MMMM Do");
+
+        scheduled.push({ description: plans, time: time, date: dateStamp });
+
+        localStorage.setItem("events", JSON.stringify(scheduled));
     });
 
+    // getting scheduled items from local storage when page is refreshed -- does not work!!! need to fix
+    var storedPlans = JSON.parse(localStorage.getItem("scheduled"));
 
-    // set date and time on work planner
-    // $(window).on("load", function () {
-    //     date = moment().format("MMMM Do YYYY");
-    //     console.log(date);
-    //     $("#currentDate").append(date);
-    //     time = moment().format("H");
-    // });
-    // date needs to update with day
-    // time needs to update
-    // display date in <p> on html page
+    if (storedPlans !== null) {
+        scheduled = storedPlans;
+    }
 
-    // set up hour blocks
-    // set up rows for hour blocks
+    for (var i = 0; i < scheduled.length; i++) {
+        var userPlans = scheduled[i].description;
+        $("#" + scheduled[i].time).children(".plan").text(userPlans);
+    }
 
-    // set hours in rows
-    // set up save buttons
-    // add floppy disc icon to save button
+    // this will change the color of the hour blocks depending on the time
+    // green for future, red for present, grey for past
+    function timeKeeper() {
+        var currentTime = moment().hours();
+
+        $(".row").each(function () {
+            var timeBlock = parseInt($(this).attr("id").split("hour")[1]);
+
+            if (currentTime > timeBlock) {
+                $(this).addClass("past");
+            }
+            else if (currentTime === timeBlock) {
+                $(this).removeClass("past");
+                $(this).addClass("present");
+            }
+            else {
+                $(this).removeClass("past");
+                $(this).removeClass("present");
+                $(this).addClass("future");
+            }
+        });
+    }
+    timeKeeper();
+
     // tie hour blocks to date and time
     // hour blocks that are past turn grey
     // grab color styling from css stylesheet
