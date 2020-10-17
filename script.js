@@ -4,11 +4,10 @@ $(document).ready(function () {
     // sets date at top of page
     $("#currentDay").text(moment().format("MMMM Do YYYY"));
 
-
     // array for plans saved to local storage by user
     var scheduled = [];
-
     // saves user's plans when scheduled button is clicked
+
     $(".saveBtn").on("click", function () {
         var plans = $(this).siblings(".plans").val();
         var time = $(this).parent().attr("id");
@@ -16,7 +15,7 @@ $(document).ready(function () {
 
         scheduled.push({ description: plans, time: time, date: dateStamp });
 
-        localStorage.setItem("events", JSON.stringify(scheduled));
+        localStorage.setItem("scheduled", JSON.stringify(scheduled));
     });
 
     // getting scheduled items from local storage when page is refreshed -- does not work!!! need to fix
@@ -31,8 +30,14 @@ $(document).ready(function () {
         $("#" + scheduled[i].time).children(".plan").text(userPlans);
     }
 
+    // clears user's schedule
+    $(".clearBtn").on("click", function () {
+        localStorage.clear();
+    });
+
     // this will change the color of the hour blocks depending on the time
     // green for future, red for present, grey for past
+
     function timeKeeper() {
         var currentTime = moment().hours();
 
@@ -57,20 +62,6 @@ $(document).ready(function () {
         });
     }
     timeKeeper();
-
-    var secondsLeft = 15;
-    function setTime() {
-        setInterval(function () {
-            secondsLeft--;
-
-            if (secondsLeft === 0) {
-                timeKeeper();
-                secondsLeft = 15;
-            }
-        }, 1000);
-    }
-    setTime();
-
     // tie hour blocks to date and time
     // hour blocks that are past turn grey
     // grab color styling from css stylesheet

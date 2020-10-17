@@ -16,8 +16,8 @@ body {
   
   .jumbotron {
     text-align: center;
-    background-color: lightcoral;
-    color: black;
+    background-color: #2e279d;
+    color: #ffffff;
     border-radius: 0;
     border-bottom: 10px solid black;
   }
@@ -76,7 +76,7 @@ body {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     height: 65px;
-    background-color: #06AED5;
+    background-color: #4d80e4;
     color: white;
     border-top: 1px #ffffff;
   }
@@ -85,4 +85,15 @@ body {
   .saveBtn i:hover {
     font-size: 20px;
     transition: all .3s ease-in-out;
+  }
+
+  .clearBtn {
+    border-left: 1px solid #000000;
+    border-radius: 10px;
+    height: 65px;
+    background-color: #2e279d;
+    color: white;
+    border-top: 1px #ffffff;
+    margin-bottom: 25px;
+    margin-left: 50px;
   }
