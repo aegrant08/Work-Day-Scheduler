@@ -14,6 +14,7 @@ body {
     padding: 10px;
   }
   
+  /* styling for jumbotron */
   .jumbotron {
     text-align: center;
     background-color: #2e279d;
@@ -87,6 +88,7 @@ body {
     transition: all .3s ease-in-out;
   }
 
+  /* styling for clear button */
   .clearBtn {
     border-left: 1px solid #000000;
     border-radius: 10px;

@@ -6,8 +6,8 @@ $(document).ready(function () {
 
     // array for plans saved to local storage by user
     var scheduled = [];
-    // saves user's plans when scheduled button is clicked
 
+    // saves user's plans when scheduled button is clicked
     $(".saveBtn").on("click", function () {
         var plans = $(this).siblings(".plans").val();
         var time = $(this).parent().attr("id");
