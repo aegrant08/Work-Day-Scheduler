@@ -10,3 +10,7 @@ When the user clicks on an hour block, they are able to type in an event to the 
 When the user clicks on the schedule button, the event is saved to local storage.
 When the user refreshes the page, the scheduled events persist and show in the appropriate hour block.
 The hour blocks are colored according to the time - green for future, red for present, and grey for past.
+
+Deployed Site
+
+https://aegrant08.github.io/Work-Day-Scheduler/
